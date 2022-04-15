@@ -48,7 +48,7 @@ def lambda_handler(event, context):
     record = recordGet(zone_id, domain_name)
     if record['ResourceRecordSets'][0]['ResourceRecords'][0]['Value'] == source_ip:
         # IP 変更なし
-        response = {'status': 'success', 'record' 'not changed' 'request_data': event['body']}
+        response = {'status': 'success', 'record': 'not changed', 'source_ip': source_ip, 'request_data': request_body}
     else:
         # IP 変更あり
         route53Update(zone_id, domain_name, source_ip)
